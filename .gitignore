@@ -1,0 +1,12 @@
+# 별도 git 저장소 (자체 이력으로 관리)
+claude-team-starter/
+
+# OS·에디터
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Claude Code 개인 설정
+CLAUDE.local.md
+.claude/settings.local.json
