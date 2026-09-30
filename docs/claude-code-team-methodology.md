@@ -475,6 +475,8 @@ if (hit) {
 - **실측 결과** (Claude Code 2.1.283, 스타터 레포에서 `claude -p`로 확인)
   - 폴더를 신뢰하기 전에는 프로젝트의 `allow` 규칙이 무시되고("Ignoring 9 permissions.allow entries ... not been trusted"), `deny`는 바로 적용됩니다.
   - `Read` deny 규칙이 있는 `.env`에 대한 Write가 hook보다 먼저 거부되었습니다. 공식 문서의 설명과 같습니다. 비밀 파일 보호는 deny 규칙이 1차, PreToolUse hook이 2차 방어선입니다.
+  - (2.1.285, 폴더 신뢰 후) `cd web && npm run verify`처럼 `cd`가 앞에 붙은 명령도 `Bash(npm run verify *)` allow 규칙에 맞아 확인 없이 실행되었습니다.
+  - (2.1.285) `--permission-mode acceptEdits`로 편집을 자동 승인해도 `Edit(/**/package.json)` 같은 **ask 규칙이 우선**해 확인을 요구했습니다. 의존성 파일처럼 사람이 봐야 하는 파일은 acceptEdits 모드에서도 ask로 지킬 수 있습니다.
 - **권한 모드 운영 기준 (팀 합의)**
 
   | 상황 | 권장 모드 |
